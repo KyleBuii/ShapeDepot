@@ -1,0 +1,287 @@
+body {
+    margin: 1.5rem;
+}
+
+button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 25px;
+    padding: 0.5rem;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+//#region Shapes [most made by Temani Afif (https://css-shape.com/)]
+.circle {
+    border-radius: 50%;
+}
+
+.triangle {
+    --b: 2px;
+
+    clip-path: polygon(
+        50% 0,
+        100% 100%,
+        0 100%,
+        50% 0,
+        50% var(--b),
+        calc(var(--b)*0.866) calc(100% - var(--b)/2),
+        calc(100% - var(--b)*0.866) calc(100% - var(--b)/2),
+        50% var(--b)
+    );
+    background: linear-gradient(
+        45deg,
+        black,
+        black
+    );
+}
+
+.rectangle {
+    height: 100px !important;
+}
+
+.hexagon {
+    --b: 3px;
+
+    clip-path: polygon(
+        0 50%,
+        50% -50%,
+        100% 50%,
+        50% 150%,
+        0 50%,
+        var(--b) 50%,
+        calc(25% + var(--b)*0.5) calc(100% - var(--b)*0.866),
+        calc(75% - var(--b)*0.5) calc(100% - var(--b)*0.866),
+        calc(100% - var(--b)) 50%,
+        calc(75% - var(--b)*0.5) calc(var(--b)*0.866),
+        calc(25% + var(--b)*0.5) calc(var(--b)*0.866),
+        var(--b) 50%
+    );
+    background: black;
+}
+
+.rhombus {
+    min-width: 100px !important;
+    min-height: 100px !important;
+    transform: rotate(45deg);
+    margin-bottom: 1.5rem;
+}
+
+.octagon {
+    --b: 3px;
+    --o: calc(50%*-0.4142);
+    --x: calc(var(--b)*0.924);
+    --y: calc(var(--b)*0.383);
+    clip-path: polygon(    
+        var(--o) 50%,50% var(--o),
+        calc(100% - var(--o)) 50%,    
+        50% calc(100% - var(--o)),var(--o) 50%,
+        calc(50% + var(--o) + var(--y)) var(--x),
+        var(--x) calc(50% + var(--o) + var(--y)),
+        var(--x) calc(50% - var(--o) - var(--y)),
+        calc(50% + var(--o) + var(--y)) calc(100% - var(--x)),
+        calc(50% - var(--o) - var(--y)) calc(100% - var(--x)),
+        calc(100% - var(--x)) calc(50% - var(--o) - var(--y)),
+        calc(100% - var(--x)) calc(50% + var(--o) + var(--y)),
+        calc(50% - var(--o) - var(--y)) var(--x),
+        calc(50% + var(--o) + var(--y)) var(--x)
+    );
+    background: black; 
+}
+//#endregion
+
+.button-icon {
+    display: block;
+    border: none;
+    font-size: 1.5rem;
+}
+
+.hotbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.hotbar-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+
+.swiper {
+    z-index: 0;
+    border: 2px solid black;
+    padding: 2rem;
+    margin-bottom: 1rem;
+}
+
+.swiper-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 2rem;
+    font-size: 4rem;
+    -webkit-touch-callout: none;
+      -webkit-user-select: none;
+       -khtml-user-select: none;
+         -moz-user-select: none;
+          -ms-user-select: none;
+              user-select: none;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+        font-size: medium;
+    }
+
+    > span {
+        flex: 1;
+        height: 100%;
+        padding-bottom: 3.3rem;
+        border-bottom: 2px solid black;
+    }
+}
+
+.swiper-pagination-bullet-active {
+    background-color: black;
+}
+
+.shop-items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    width: 10rem;
+    height: 14rem;
+}
+
+.shape {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 128px;
+    min-height: 128px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    transition: background-color 0.8s;
+}
+
+.shopping-cart {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    background-color: white;
+    height: 100%;
+    border: 2px solid black;
+    padding: 1rem;
+    box-sizing: border-box;
+    transition: right 0.5s;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 105%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        gap: 2rem;
+        margin: 1rem 0;
+
+        &::-webkit-scrollbar {
+            width: 0.9rem;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 8px;
+            border: 3px solid transparent;
+            background-clip: content-box;
+        }
+
+        &::-webkit-scrollbar-button {
+            display: none;
+            width: 0;
+            height: 0;
+        }
+
+        div {
+            position: relative;
+
+            span:last-of-type {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+    }
+
+    h2 {
+        border-bottom: 2px solid black;
+        padding-bottom: 1rem;
+    }
+
+    button {
+        width: 100%;
+
+        &:first-of-type {
+            height: 1.5rem;
+            border-radius: 0;
+        }
+    }
+
+    &.active {
+        right: 0;
+    }
+}
+
+.shopping-cart-extra {
+    cursor: pointer;
+    pointer-events: none;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.8s;
+
+    &.active {
+        pointer-events: all;
+        opacity: 0.5;
+    }
+}
