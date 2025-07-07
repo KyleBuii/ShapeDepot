@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import MatterScene from './MatterScene';
+import MatterScene from './MatterScene.jsx';
 
 const StoragePage = ({ storage }) => {
     return (

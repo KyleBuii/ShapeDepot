@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { BsMinecart } from 'react-icons/bs';
 import { BrowserRouter, Link, Route, Routes } from 'react-router';
-import HomePage from './HomePage';
-import StoragePage from './StoragePage';
+import HomePage from './HomePage.jsx';
+import StoragePage from './StoragePage.jsx';
 
 const Hotbar = ({ storage, tempCart, combineObjects, toggleShoppingCart }) => {
     const handleHotbar = (what) => {

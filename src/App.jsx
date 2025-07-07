@@ -1,6 +1,6 @@
 import { memo, useState } from 'react';
-import Hotbar from './Hotbar';
-import ShoppingCart from './ShoppingCart';
+import Hotbar from './Hotbar.jsx';
+import ShoppingCart from './ShoppingCart.jsx';
 
 let tempCart = {};
 
