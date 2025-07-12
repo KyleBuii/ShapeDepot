@@ -4,7 +4,7 @@ import { BrowserRouter, Link, Route, Routes } from 'react-router';
 import HomePage from './HomePage.jsx';
 import StoragePage from './StoragePage.jsx';
 
-const Hotbar = ({ storage, tempCart, combineObjects, toggleShoppingCart }) => {
+const Hotbar = ({ storage, cart, setCart, combineObjects, toggleShoppingCart }) => {
     const handleHotbar = (what) => {
         const elementHotbar = document.querySelectorAll('.hotbar .active');
         if (elementHotbar.length === 1) {
@@ -12,6 +12,10 @@ const Hotbar = ({ storage, tempCart, combineObjects, toggleShoppingCart }) => {
         };
         const buttonHotbar = document.getElementById(`hotbar-button-${what}`);
         buttonHotbar.classList.toggle('active');
+    };
+
+    const getTotalCart = () => {
+        return Object.values(cart).reduce((sum, value) => sum + value, 0);
     };
 
     return (
@@ -28,9 +32,11 @@ const Hotbar = ({ storage, tempCart, combineObjects, toggleShoppingCart }) => {
                         <button id='hotbar-button-storage'
                             onClick={() => handleHotbar('storage')}>Storage</button>
                     </Link>
-                    <button className='button-icon'
+                    <button id='shopping-cart-button'
+                        className='button-icon'
                         onClick={() => toggleShoppingCart()}>
                         <BsMinecart/>
+                        {(getTotalCart() !== 0) && <span className='button-icon-extra'>{getTotalCart()}</span>}
                     </button>
                 </div>
             </section>
@@ -39,7 +45,8 @@ const Hotbar = ({ storage, tempCart, combineObjects, toggleShoppingCart }) => {
                     path='/'
                     element={
                         <HomePage
-                            tempCart={tempCart}
+                            cart={cart}
+                            setCart={setCart}
                             combineObjects={combineObjects}/>
                     }/>
                 <Route

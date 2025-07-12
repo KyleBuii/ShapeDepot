@@ -1,12 +1,25 @@
 import { memo } from 'react';
 
 const ShoppingCart = ({ cart, addToStorage, toggleShoppingCart }) => {
+    const handleBuy = () => {
+        const elementCartItems = document.querySelector('.shopping-cart-items');
+        elementCartItems.classList.add('animation-buy-items');
+    };
+
+    const handleAnimationEnd = () => {
+        const elementCartItems = document.querySelector('.shopping-cart-items');
+        elementCartItems.classList.remove('animation-buy-items');
+
+        addToStorage();
+    };
+
     return (
         <div>
             <section className='shopping-cart'>
-                <button onClick={() => toggleShoppingCart()}>Close</button>
+                <button onClick={toggleShoppingCart}>Close</button>
                 <h2>Shopping Cart</h2>
-                <div>
+                <div className='shopping-cart-items'
+                    onAnimationEnd={handleAnimationEnd}>
                     {Object.keys(cart).map((item) => {
                         return <div key={item}>
                             <span className={`shape ${item}`}></span>
@@ -14,10 +27,10 @@ const ShoppingCart = ({ cart, addToStorage, toggleShoppingCart }) => {
                         </div>
                     })}
                 </div>
-                <button onClick={() => addToStorage()}>Buy</button>
+                <button onClick={handleBuy}>Buy</button>
             </section>
             <section className='shopping-cart-extra'
-                onClick={() => toggleShoppingCart()}
+                onClick={toggleShoppingCart}
                 role='button'></section>
         </div>
     );

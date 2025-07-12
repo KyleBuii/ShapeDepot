@@ -178,6 +178,7 @@ h1, h2 {
 }
 
 .button-icon {
+    position: relative;
     display: block;
     border: none;
     font-size: 1.5rem;
@@ -187,6 +188,22 @@ h1, h2 {
         background-color: unset;
         color: rgba(0, 0, 0, 0.4);
     }
+}
+
+.button-icon-extra {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 0.1rem;
+    right: 0;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 .hotbar {
@@ -277,6 +294,7 @@ h1, h2 {
 }
 
 .shape {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -286,8 +304,17 @@ h1, h2 {
     box-sizing: border-box;
     transition: background-color 0.8s;
 
-    &:hover:not(.triangle):not(.hexagon):not(.octagon) {
-        background-color: rgba(0, 0, 0, 0.2);
+    &:not(.triangle):not(.hexagon):not(.octagon) {
+        background-color: white;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &.cloned {
+        position: absolute;
+        transition: all 0.8s;
     }
 }
 
@@ -314,7 +341,7 @@ h1, h2 {
         width: 105%;
         height: 100%;
         overflow-x: hidden;
-        overflow-y: scroll;
+        overflow-y: auto;
         gap: 2rem;
         margin: 1rem 0;
 
@@ -382,5 +409,24 @@ h1, h2 {
     &.active {
         pointer-events: all;
         opacity: 0.5;
+    }
+}
+
+.animation-buy-items {
+    animation: buyItems 0.8s;
+}
+
+@keyframes buyItems {
+    0% {
+        transform: translateX(0);
+    }
+    20% {
+        transform: translateX(-10%);
+    }
+    50% {
+        transform: translateX(-10%);
+    }
+    100% {
+        transform: translateX(110%);
     }
 }

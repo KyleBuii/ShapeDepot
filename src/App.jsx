@@ -2,8 +2,6 @@ import { memo, useState } from 'react';
 import Hotbar from './Hotbar.jsx';
 import ShoppingCart from './ShoppingCart.jsx';
 
-let tempCart = {};
-
 const App = () => {
     const [cart, setCart] = useState({});
     const [storage, setStorage] = useState({});
@@ -36,15 +34,6 @@ const App = () => {
                 clearTimeout(cartExtraTimeout);
             }, 800);
         };
-
-        if (shoppingCart.classList.contains('active')) {
-            const combinedCarts = combineObjects(tempCart, cart);
-
-            if (combinedCarts === undefined) return;
-
-            setCart(combinedCarts);
-            tempCart = {};
-        };
     };
 
     const addToStorage = () => {
@@ -62,7 +51,8 @@ const App = () => {
         <div>
             <Hotbar
                 storage={storage}
-                tempCart={tempCart}
+                cart={cart}
+                setCart={setCart}
                 combineObjects={combineObjects}
                 addToStorage={addToStorage}
                 toggleShoppingCart={toggleShoppingCart}/>
